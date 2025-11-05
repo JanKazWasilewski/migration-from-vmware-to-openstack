@@ -91,14 +91,14 @@ ansible-playbook -i inventory.yml os_migrate.vmware_migration_kit.migration \
 
 ## Choosing your migration strategy: performance trade-offs
 
-The choice between **cold migration** and **warm migration** fundamentally affects both total execution time and downtime. Cold migration takes VMs offline, captures full disk snapshots, performs conversion, and boots instances—straightforward but downtime-intensive. Warm migration leverages **Change Block Tracking (CBT)**, capturing initial snapshots while VMs run, then incrementally syncing only changed blocks before a brief final cutover. The performance difference is dramatic:
+The choice between **cold migration** and **warm migration** fundamentally affects both total execution time and downtime. Cold migration takes VMs offline, captures full disk snapshots, performs conversion, and boots instances—straightforward but downtime-intensive. Warm migration leverages **Change Block Tracking (CBT)**, capturing initial snapshots while VMs run, then incrementally syncing only changed blocks before a brief final cutover. The performance difference is dramatic and [shown below](https://os-migrate.github.io/documentation/#_table_2):
 
 | Disk Size | CBT Enabled | Total Time | Cutover Time | Expected Downtime |
 |-----------|-------------|------------|--------------|-------------------|
 | 100 GB    | Yes         | 8 min      | 2 min        | 2 min             |
-| 100 GB    | No          | 7 min      | 7 min        | 7 min             |
+| 100 GB    | No          | 7 min      |        | 7 min             |
 | 1 TB      | Yes         | 39 min     | 2 min        | 2 min             |
-| 1 TB      | No          | 35 min     | 35 min       | 35 min            |
+| 1 TB      | No          | 35 min     |        | 35 min            |
 
 For parallel migrations, performance scales predictably—a single conversion host handling 6 concurrent threads migrates 20 VMs in just 15 minutes versus 31 minutes with sequential execution.
 
