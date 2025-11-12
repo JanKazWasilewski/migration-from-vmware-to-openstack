@@ -15,6 +15,7 @@ VMware-to-Openstack migration surfaces three critical architectural mismatches t
 ## Three phases of VMware-to-Openstack migration
 
 The migration process unfolds in three sequential phases, each serving a distinct purpose in the overall workflow.
+<img width="1558" height="613" alt="image" src="https://github.com/user-attachments/assets/3d050d0f-dcea-4780-8ed4-5f70558bff09" />
 
 ### Discovery Phase
 
